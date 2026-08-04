@@ -169,7 +169,7 @@ if(BUILD_SHARED_LIBS)
     )
 
     # Set library version
-    set_target_properties(ixwebsocket PROPERTIES VERSION ${PROJECT_VERSION})
+    set_target_properties(ixwebsocket PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION ${PROJECT_VERSION_MAJOR})
 else()
     # Static library
     add_library( ixwebsocket
