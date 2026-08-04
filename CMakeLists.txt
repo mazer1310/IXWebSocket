@@ -101,6 +101,7 @@ set( IXWEBSOCKET_HEADERS
     ixwebsocket/IXWebSocketCloseConstants.h
     ixwebsocket/IXWebSocketCloseInfo.h
     ixwebsocket/IXWebSocketErrorInfo.h
+    ixwebsocket/IXWebsocketExport.h
     ixwebsocket/IXWebSocketHandshake.h
     ixwebsocket/IXWebSocketHandshakeKeyGen.h
     ixwebsocket/IXWebSocketHttpHeaders.h
