@@ -676,8 +676,35 @@ namespace ix
                     }
                 }
 
-                SSL_CTX_set_verify(
-                    _ssl_context, SSL_VERIFY_PEER | SSL_VERIFY_FAIL_IF_NO_PEER_CERT, nullptr);
+                if (_tlsOptions.allow_server_certificates)
+                {
+                    SSL_CTX_set_verify(_ssl_context,
+                                       SSL_VERIFY_PEER | SSL_VERIFY_FAIL_IF_NO_PEER_CERT,
+                                       [](int preverify, X509_STORE_CTX* ctx) -> int
+                                       {
+                                           int err = X509_STORE_CTX_get_error(ctx);
+
+                                           // If the failure is due to unsupported or missing EKU purpose clear the error.
+                                           // This allows a SERVER certificate to be used as a CLIENT certificate in mTLS (Two
+                                           // Way TLS)
+                                           if (err == X509_V_ERR_INVALID_PURPOSE)
+                                           {
+                                               // Clear the error and return 1 to accept the
+                                               // certificate
+                                               X509_STORE_CTX_set_error(ctx, X509_V_OK);
+                                               return 1;
+                                           }
+
+                                           // Return the original verification status for any other
+                                           // constraints (e.g., expiration, untrusted CA)
+                                           return preverify;
+                                       });
+                }
+                else
+                {
+                    SSL_CTX_set_verify(
+                        _ssl_context, SSL_VERIFY_PEER | SSL_VERIFY_FAIL_IF_NO_PEER_CERT, nullptr);
+                }
                 SSL_CTX_set_verify_depth(_ssl_context, 4);
             }
             else

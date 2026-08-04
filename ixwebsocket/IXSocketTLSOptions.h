@@ -36,6 +36,12 @@ namespace ix
         // whether to skip validating the peer's hostname against the certificate presented
         bool disable_hostname_validation = false;
 
+        // (server only, currently OpenSSL only) whether to allow clients to use server certificates for client mTLS (2 way TLS) verification.
+        // WARNING: This undermines one of the key tenants of TLS trust and should be used with great
+        // caution.  See https://nhimg.org/articles/dual-eku-tls-deprecation-is-forcing-clientauth-certificate-redesign/
+        // for context.
+        bool allow_server_certificates = false;
+
         bool hasCertAndKey() const;
 
         bool isUsingSystemDefaults() const;
