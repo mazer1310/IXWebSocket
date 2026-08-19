@@ -461,6 +461,12 @@ namespace ix
         }
     }
 
+    void* SocketOpenSSL::getOpenSSLConnection() const
+    {
+        return static_cast<void*>(_ssl_connection);
+    }
+
+
     bool SocketOpenSSL::handleTLSOptions(std::string& errMsg)
     {
         ERR_clear_error();
