@@ -38,6 +38,8 @@ namespace ix
         virtual std::ptrdiff_t send(char* buffer, size_t length) final;
         virtual std::ptrdiff_t recv(void* buffer, size_t length) final;
 
+        virtual void* getOpenSSLConnection() const final;
+
     private:
         friend struct SocketOpenSSLWriteTestAccess;
         void openSSLInitialize();

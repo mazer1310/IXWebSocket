@@ -183,6 +183,12 @@ namespace ix
         return _minWaitBetweenReconnectionRetries;
     }
 
+    // get the OpenSSL SSL* pointer from the underlying socket Transport
+    void* WebSocket::getOpenSSLConnection() const
+    {
+        return _ws.getOpenSSLConnection();
+    }
+
     void WebSocket::start()
     {
         if (_thread.joinable()) return; // we've already been started

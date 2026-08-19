@@ -123,6 +123,9 @@ namespace ix
         // send any type of ping packet, not only 'ping' type
         WebSocketSendInfo sendHeartBeat(SendMessageKind pingType);
 
+        // get the OpenSSL SSL* pointer from the underlying socket Transport
+        void* getOpenSSLConnection() const;
+
     private:
         friend struct WebSocketTransportTestAccess;
         std::string _url;

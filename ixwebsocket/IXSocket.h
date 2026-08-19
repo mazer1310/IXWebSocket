@@ -85,6 +85,8 @@ namespace ix
                                    socket_t sockfd,
                                    const SelectInterruptPtr& selectInterrupt);
 
+        virtual void* getOpenSSLConnection() const;
+
     protected:
         std::atomic<int> _sockfd;
         std::mutex _socketMutex;

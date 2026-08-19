@@ -125,6 +125,9 @@ namespace ix
 
         void setAutoThreadName(bool enabled);
 
+        //get the OpenSSL SSL* pointer from the underlying socket Transport
+        void* getOpenSSLConnection() const;
+
     private:
         WebSocketSendInfo sendMessage(const IXWebSocketSendData& message,
                                       SendMessageKind sendMessageKind,
