@@ -121,6 +121,9 @@ namespace ix
 
         void setAutoThreadName(bool enabled);
 
+        //get the OpenSSL X509* peer certificate from the underlying socket Transport
+        void* getOpenSSLPeerCertificate() const;
+
     private:
         WebSocketSendInfo sendMessage(const IXWebSocketSendData& message,
                                       SendMessageKind sendMessageKind,

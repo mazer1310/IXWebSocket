@@ -80,6 +80,8 @@ namespace ix
                                    socket_t sockfd,
                                    const SelectInterruptPtr& selectInterrupt);
 
+        virtual void* getOpenSSLPeerCertificate() const;
+
     protected:
         std::atomic<int> _sockfd;
         std::mutex _socketMutex;

@@ -177,6 +177,12 @@ namespace ix
         return _minWaitBetweenReconnectionRetries;
     }
 
+    // get the OpenSSL X509* remote peer certificate pointer from the underlying socket Transport
+    void* WebSocket::getOpenSSLPeerCertificate() const
+    {
+        return _ws.getOpenSSLPeerCertificate();
+    }
+
     void WebSocket::start()
     {
         if (_thread.joinable()) return; // we've already been started

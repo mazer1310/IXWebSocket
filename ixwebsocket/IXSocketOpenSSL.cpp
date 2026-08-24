@@ -461,6 +461,12 @@ namespace ix
         }
     }
 
+    void* SocketOpenSSL::getOpenSSLPeerCertificate() const
+    {
+        return static_cast<void*>(SSL_get_peer_certificate(_ssl_connection));
+    }
+
+
     bool SocketOpenSSL::handleTLSOptions(std::string& errMsg)
     {
         ERR_clear_error();

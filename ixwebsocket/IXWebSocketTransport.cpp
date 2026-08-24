@@ -36,6 +36,7 @@
 
 #include "IXSocketFactory.h"
 #include "IXSocketTLSOptions.h"
+#include "IXSocketOpenSSL.h"
 #include "IXUniquePtr.h"
 #include "IXUrlParser.h"
 #include "IXUtf8Validator.h"
@@ -86,6 +87,12 @@ namespace ix
     WebSocketTransport::~WebSocketTransport()
     {
         ;
+    }
+
+    // get the OpenSSL SSL* pointer from the underlying socket Transport
+    void* WebSocketTransport::getOpenSSLPeerCertificate() const
+    {
+        return _socket ? _socket.get()->getOpenSSLPeerCertificate() : nullptr;
     }
 
     void WebSocketTransport::configure(
