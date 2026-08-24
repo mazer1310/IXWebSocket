@@ -41,7 +41,7 @@ namespace ix
         close();
     }
 
-    void* Socket::getOpenSSLConnection() const
+    void* Socket::getOpenSSLPeerCertificate() const
     {
         return nullptr;
     }
