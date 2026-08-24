@@ -461,9 +461,9 @@ namespace ix
         }
     }
 
-    void* SocketOpenSSL::getOpenSSLConnection() const
+    void* SocketOpenSSL::getOpenSSLPeerCertificate() const
     {
-        return static_cast<void*>(_ssl_connection);
+        return static_cast<void*>(SSL_get_peer_certificate(_ssl_connection));
     }
 
 

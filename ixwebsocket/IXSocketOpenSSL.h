@@ -36,7 +36,7 @@ namespace ix
         virtual std::ptrdiff_t send(char* buffer, size_t length) final;
         virtual std::ptrdiff_t recv(void* buffer, size_t length) final;
 
-        virtual void* getOpenSSLConnection() const final;
+        virtual void* getOpenSSLPeerCertificate() const final;
 
     private:
         void openSSLInitialize();

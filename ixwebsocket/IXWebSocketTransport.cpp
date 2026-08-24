@@ -90,9 +90,9 @@ namespace ix
     }
 
     // get the OpenSSL SSL* pointer from the underlying socket Transport
-    void* WebSocketTransport::getOpenSSLConnection() const
+    void* WebSocketTransport::getOpenSSLPeerCertificate() const
     {
-        return _socket ? _socket.get()->getOpenSSLConnection() : nullptr;
+        return _socket ? _socket.get()->getOpenSSLPeerCertificate() : nullptr;
     }
 
     void WebSocketTransport::configure(
