@@ -42,6 +42,11 @@ namespace ix
         // for context.
         bool allow_server_certificates = false;
 
+        // additional OpenSSL CTX options to set when calling SSL_CTX_set_options during the handshake
+        uint64_t additional_openssl_ctx_options = 0;
+
+        bool hasAdditionalOptions() const;
+
         bool hasCertAndKey() const;
 
         bool isUsingSystemDefaults() const;
