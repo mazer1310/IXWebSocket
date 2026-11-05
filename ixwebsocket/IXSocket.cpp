@@ -41,6 +41,11 @@ namespace ix
         close();
     }
 
+    void* Socket::getOpenSSLPeerCertificate() const
+    {
+        return nullptr;
+    }
+
     PollResultType Socket::poll(bool readyToRead,
                                 int timeoutMs,
                                 socket_t sockfd,
